@@ -29,6 +29,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+#logo{
+	filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+}
+
+#logo img{
+	width: 100%;
+}
+
 body {
 	line-height: 1;
 }
@@ -2176,7 +2184,7 @@ input, select, textarea {
 
 	#header {
 		position: relative;
-		background-image: url("../../images/header.jpg");
+		background-image: url("../../images/pexels-thgusstavo-1813272-darkBlur.jpg");
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
