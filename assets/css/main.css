@@ -2654,8 +2654,8 @@ input, select, textarea {
 	position: relative;
 	z-index: 1;
 	/* base padding — add extra bottom padding to account for lift so hit area doesn't move */
-	padding: 0.85em 1.25em;
-	padding-bottom: calc(0.85em + 8px);
+	padding: 0.45em .9em;
+	padding-bottom: calc(0.45em + 8px);
 	/* 8px = max lift */
 	transition: color 0.3s ease;
 }
