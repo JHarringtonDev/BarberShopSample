@@ -2637,6 +2637,74 @@ input, select, textarea {
 				border-right: solid 0.75em rgba(64, 64, 64, 0);
 			}
 
+/* Nav: balanced lift — visual and label move, hit area fixed */
+
+/* make li a stable container (no translate on the actual element) */
+#nav>ul>li {
+	position: relative;
+	border-radius: 45px;
+	overflow: visible;
+	/* keep original transitions */
+	transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out;
+}
+
+/* anchor becomes the clickable block; give it extra vertical space to cover lifted label */
+#nav>ul>li>a {
+	display: block;
+	position: relative;
+	z-index: 1;
+	/* base padding — add extra bottom padding to account for lift so hit area doesn't move */
+	padding: 0.45em .9em;
+	padding-bottom: calc(0.45em + 8px);
+	/* 8px = max lift */
+	transition: color 0.3s ease;
+}
+
+/* wrap label so we can move the visual text independently */
+#nav>ul>li>a>.nav-label {
+	display: inline-block;
+	position: relative;
+	z-index: 2;
+	transition: transform 0.28s cubic-bezier(.2, .9, .2, 1), color 0.28s;
+}
+
+/* decorative "button" behind label */
+#nav>ul>li::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	/* cover whole li */
+	border-radius: inherit;
+	background: transparent;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.05);
+	transition: background-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* hover: move the visual layer and the label a small amount (smaller than original -7px) */
+#nav>ul>li:hover::before {
+	background-color: #000000;
+	box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.28);
+	transform: translateY(-5px);
+}
+
+/* move label slightly to match the background lift (visual only) */
+#nav>ul>li:hover>a>.nav-label {
+	transform: translateY(-4px);
+	color: #fff;
+}
+
+/* active press feedback (subtle) */
+#nav>ul>li:active::before {
+	transform: translateY(-2px);
+}
+
+#nav>ul>li:hover>a,
+#nav>ul>li:hover>a>.nav-label {
+	color: #ffffff;
+}
+
 /* Banner */
 
 	#banner {
